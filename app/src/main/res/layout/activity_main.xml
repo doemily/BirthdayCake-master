@@ -51,5 +51,11 @@
             android:layout_height="wrap_content"
             android:text="yay..." />
 
+        <Switch
+            android:id="@+id/simpleSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frosting"/>
+
     </LinearLayout>
 </LinearLayout>
