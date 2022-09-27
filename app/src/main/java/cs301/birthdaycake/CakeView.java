@@ -82,10 +82,10 @@ public class CakeView extends SurfaceView {
      */
     public void drawCandle(Canvas canvas, float left, float bottom) {
         if(this.cakeModel.hasCandles) {
-            canvas.drawRect(left, bottom - candleHeight, left+ candleWidth +50, bottom, candlePaint);
+            canvas.drawRect(left, bottom - candleHeight, left+ candleWidth +70, bottom, candlePaint);
             if (this.cakeModel.isLit) {
                 //draw the outer flame
-                float flameCenterX = left + (candleWidth+50) / 2;
+                float flameCenterX = left + (candleWidth+70) / 2;
                 float flameCenterY = bottom - wickHeight - candleHeight - outerFlameRadius / 3;
                 canvas.drawCircle(flameCenterX, flameCenterY, outerFlameRadius, outerFlamePaint);
 
@@ -95,7 +95,7 @@ public class CakeView extends SurfaceView {
             }
 
             //draw the wick
-            float wickLeft = left + (candleWidth+50) / 2 - wickWidth / 2;
+            float wickLeft = left + (candleWidth+70) / 2 - wickWidth / 2;
             float wickTop = bottom - wickHeight - candleHeight;
             canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
 
