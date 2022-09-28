@@ -5,9 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
 
-public class CakeView extends SurfaceView {
+public class CakeView extends SurfaceView implements View.OnTouchListener {
 
     // lab3
     private CakeModel cakeModel;
@@ -19,7 +21,7 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
-
+    CheckerBoard checkerBoard = new CheckerBoard();
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
         and adapting to different tablets' screen sizes and resolutions.  I've deliberately
@@ -142,6 +144,7 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas, cakeLeft + (cakeWidth * i) / (cakeModel.numCandles + 1) - (candleWidth * i) / 2, cakeTop);
         }
 
+        checkerBoard.draw(canvas);
     }//onDraw
 
     //lab3
@@ -149,5 +152,19 @@ public class CakeView extends SurfaceView {
         return cakeModel;
     }
 
-}//class CakeView
+    @Override
+    public boolean onTouch(View view, MotionEvent e) {
+        if(e.getActionMasked() == MotionEvent.ACTION_DOWN) {
+            float x = e.getX();
+            float y = e.getY();
+            //Get the finger or pen location
+            checkerBoard.set(x,y);
+            invalidate();
+            return true;
+        }
+
+        return false;//In this case we didn't do anything
+    }
+    }
+//class CakeView
 
