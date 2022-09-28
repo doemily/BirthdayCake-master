@@ -144,7 +144,9 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
             drawCandle(canvas, cakeLeft + (cakeWidth * i) / (cakeModel.numCandles + 1) - (candleWidth * i) / 2, cakeTop);
         }
 
-        checkerBoard.draw(canvas);
+        if(checkerBoard.touched) {
+            checkerBoard.draw(canvas);
+        }
     }//onDraw
 
     //lab3
@@ -157,7 +159,7 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
         if(e.getActionMasked() == MotionEvent.ACTION_DOWN) {
             float x = e.getX();
             float y = e.getY();
-            //Get the finger or pen location
+            checkerBoard.touched = true;
             checkerBoard.set(x,y);
             invalidate();
             return true;

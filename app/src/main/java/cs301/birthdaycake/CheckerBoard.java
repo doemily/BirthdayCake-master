@@ -12,14 +12,16 @@ public class CheckerBoard {
     private float bottom;
     private float translateX;
     private float translateY;
+    public boolean touched;
 
     public CheckerBoard() {
-        left = 50;
-        top = 50;
+        left = -50;
+        top = -50;
         right = left + 50;
         bottom = top + 50;
         translateX = 0;
         translateY = 0;
+        touched = false;
         red = new Paint();
         green = new Paint();
         red.setARGB(255,255,0,0);
