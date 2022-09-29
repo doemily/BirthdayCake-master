@@ -1,6 +1,7 @@
 package cs301.birthdaycake;
 
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
@@ -8,6 +9,7 @@ import android.widget.SeekBar;
 public class CakeController implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener, View.OnTouchListener {
     private CakeView cakeView;
     private CakeModel cakeModel;
+    private View view;
 
     public CakeController(CakeView cv) {
         cakeView = cv;
@@ -45,19 +47,6 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        //set coordinates for the balloon touch event
-        cakeView.balloonLeft = motionEvent.getX();
-        cakeView.balloonTop = motionEvent.getY();
-        //set cakeModel's x and y coord to corresponding touch
-        cakeModel.x = (int) motionEvent.getX();
-        cakeModel.y = (int) motionEvent.getY();
-        cakeView.invalidate();
-
-        return false;
-    }
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
 
         this.view = view;
         view.performClick();
@@ -74,6 +63,14 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
             cakeView.invalidate();
             return true;
         }
+        //set coordinates for the balloon touch event
+        cakeView.balloonLeft = motionEvent.getX();
+        cakeView.balloonTop = motionEvent.getY();
+        //set cakeModel's x and y coord to corresponding touch
+        cakeModel.x = (int) motionEvent.getX();
+        cakeModel.y = (int) motionEvent.getY();
+        cakeView.invalidate();
+
         return true;
     }
 }

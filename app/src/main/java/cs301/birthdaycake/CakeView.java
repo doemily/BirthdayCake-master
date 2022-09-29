@@ -11,7 +11,7 @@ public class CakeView extends SurfaceView {
 
     // lab3
     private CakeModel cakeModel;
-
+    CheckerBoard checkerBoard;
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
     Paint frostingPaint = new Paint();
