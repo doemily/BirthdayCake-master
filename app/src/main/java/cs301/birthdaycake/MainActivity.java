@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         candles.setOnCheckedChangeListener(cc);
         SeekBar seekBar = findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(cc);
+        cv.setOnTouchListener(cv);
     }
 
     public void goodBye(View button) {
