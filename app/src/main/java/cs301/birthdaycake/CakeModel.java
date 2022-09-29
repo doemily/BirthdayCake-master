@@ -7,4 +7,5 @@ public class CakeModel {
     boolean hasCandles = true;
     int touchX = 0;
     int touchY = 0;
+    CheckerBoard checkerBoard = new CheckerBoard();
 }

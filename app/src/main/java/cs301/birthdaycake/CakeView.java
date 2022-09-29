@@ -9,11 +9,11 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 
-public class CakeView extends SurfaceView implements View.OnTouchListener {
+public class CakeView extends SurfaceView {
 
     // lab3
     private CakeModel cakeModel;
-
+    CheckerBoard checkerBoard;
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
     Paint frostingPaint = new Paint();
@@ -23,7 +23,7 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
     Paint wickPaint = new Paint();
     Paint redText = new Paint();
 
-    CheckerBoard checkerBoard = new CheckerBoard();
+
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
         and adapting to different tablets' screen sizes and resolutions.  I've deliberately
@@ -80,6 +80,7 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
         // lab3
         cakeModel = new CakeModel();
 
+        checkerBoard = cakeModel.checkerBoard;
     }
 
     /**
@@ -160,19 +161,19 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
         return cakeModel;
     }
 
-    @Override
-    public boolean onTouch(View view, MotionEvent e) {
-        if(e.getActionMasked() == MotionEvent.ACTION_DOWN) {
-            float x = e.getX();
-            float y = e.getY();
-            checkerBoard.touched = true;
-            checkerBoard.set(x,y);
-            invalidate();
-            return true;
-        }
-
-        return false;//In this case we didn't do anything
-    }
+//    @Override
+//    public boolean onTouch(View view, MotionEvent e) {
+//        if(e.getActionMasked() == MotionEvent.ACTION_DOWN) {
+//            float x = e.getX();
+//            float y = e.getY();
+//            checkerBoard.touched = true;
+//            checkerBoard.set(x,y);
+//            invalidate();
+//            return true;
+//        }
+//
+//        return false;//In this case we didn't do anything
+//    }
     }
 //class CakeView
 
