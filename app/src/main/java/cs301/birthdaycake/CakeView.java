@@ -22,6 +22,8 @@ public class CakeView extends SurfaceView {
     Paint balloonPaint = new Paint();
     Paint stringPaint = new Paint();
 
+    Paint redText = new Paint();
+
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -79,12 +81,15 @@ public class CakeView extends SurfaceView {
         balloonPaint.setStyle(Paint.Style.FILL);
         stringPaint.setColor(Color.BLACK);
         stringPaint.setStrokeWidth(5.0f);
+        redText.setColor(Color.RED);
+        redText.setTextSize(50);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
         // lab3
         cakeModel = new CakeModel();
 
+        checkerBoard = cakeModel.checkerBoard;
     }
 
     /**
@@ -162,6 +167,11 @@ public class CakeView extends SurfaceView {
             drawBalloon(canvas);
         }
 
+        canvas.drawText("("+cakeModel.touchX+","+cakeModel.touchY+")", getWidth()-300, getHeight()-100, redText);
+
+        if(checkerBoard.touched) {
+            checkerBoard.draw(canvas);
+        }
     }//onDraw
 
     //lab3
@@ -169,5 +179,19 @@ public class CakeView extends SurfaceView {
         return cakeModel;
     }
 
-}//class CakeView
+//    @Override
+//    public boolean onTouch(View view, MotionEvent e) {
+//        if(e.getActionMasked() == MotionEvent.ACTION_DOWN) {
+//            float x = e.getX();
+//            float y = e.getY();
+//            checkerBoard.touched = true;
+//            checkerBoard.set(x,y);
+//            invalidate();
+//            return true;
+//        }
+//
+//        return false;//In this case we didn't do anything
+//    }
+    }
+//class CakeView
 

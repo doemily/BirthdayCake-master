@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         CakeController cc = new CakeController(cv);
         // int x = 5;
 
+        cv.setOnTouchListener(cc);
+
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(cc);
